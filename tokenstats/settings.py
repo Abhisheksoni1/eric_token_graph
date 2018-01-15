@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'tokenstats.urls'
-
+# CRONTAB_COMMAND_SUFFIX = '2>&1'
 
 CRONJOBS = [
     # job after every 10 seconds

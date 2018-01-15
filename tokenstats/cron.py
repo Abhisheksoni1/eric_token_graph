@@ -6,12 +6,18 @@
 
 import requests
 import json
+# import django
 import logging
+# import os,sys
 
-try:
-    import cfscrape
-except Exception as e:
-    logging.error(e)
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# #
+# sys.path.append('/usr/local/bin/python')
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'tokenstats.settings'
+# django.setup()
+# from django.conf import settings
+
+import cfscrape
 
 from bs4 import BeautifulSoup
 
