@@ -1,1 +1,1 @@
-web: gunicorn investment_portfolio.wsgi --log-file -
+web: gunicorn tokenstats.wsgi --log-file -
