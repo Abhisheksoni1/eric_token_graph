@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'graph',
     'django_crontab',
+    'highcharts',
+    'graph',
 ]
 
 MIDDLEWARE_CLASSES = (

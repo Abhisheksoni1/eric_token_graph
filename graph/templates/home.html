@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="panel panel-default">
+    <div id="chart_panel" class="panel-body"
+         style="width:100%;height:314px"></div>
+</div>
+
+<div class="panel panel-default">
+    <div id="chart_panel1" class="panel-body"
+         style="width:100%;height:314px"></div>
+</div>
+<div class="panel panel-default">
+    <div id="chart_panel2" class="panel-body"
+         style="width:100%;height:314px"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+     var avgByDayOptions = {
+        chart: {
+            renderTo: 'chart_panel',
+            type: 'line',
+        },
+        legend: {enabled: false},
+        title: {text: 'Token Details'},
+        subtitle: {text: 'Price vs token'},
+        xAxis: {title: {text: null}, labels: {rotation: -45}},
+        yAxis: {title: {text: null}},
+        series: [{}],
+    };
+
+    var chartDataUrl = "{% url 'bar' %}";
+    $.getJSON(chartDataUrl,
+        function(data) {
+            avgByDayOptions.xAxis.categories = data['dates'];
+            avgByDayOptions.series[0].name = 'price in $';
+            avgByDayOptions.series[0].data = data['prices'];
+
+            var chart = new Highcharts.Chart(avgByDayOptions);
+    });
+
+
+    var token_data = {
+    chart: {
+        renderTo: 'chart_panel1',
+        type: 'line',
+    },
+    legend: {enabled: false},
+    title: {text: 'Total Token '},
+    subtitle: {text: 'token'},
+    xAxis: {title: {text: null}, labels: {rotation: -45}},
+    yAxis: {title: {text: null}},
+    series: [{}],
+    };
+
+    var chartDataUrl = "{% url 'bar' %}";
+    $.getJSON(chartDataUrl,
+        function(data) {
+            token_data.xAxis.categories = data['dates'];
+            token_data.series[0].name = 'total token';
+            token_data.series[0].data = data['total_token'];
+            var chart = new Highcharts.Chart(token_data);
+    });
+
+
+    var percentage_holds = {
+    chart: {
+        renderTo: 'chart_panel2',
+        type: 'line',
+    },
+    legend: {enabled: false},
+    title: {text: 'Percentage of token'},
+    subtitle: {text: '% vs date'},
+    xAxis: {title: {text: null}, labels: {rotation: -45}},
+    yAxis: {title: {text: null}},
+    series: [{}],
+    };
+
+    var chartDataUrl = "{% url 'bar' %}";
+    $.getJSON(chartDataUrl,
+        function(data) {
+            percentage_holds.xAxis.categories = data['dates'];
+            percentage_holds.series[0].name = '% holds by top 100';
+            percentage_holds.series[0].data = data['percentage_holds'];
+            var chart = new Highcharts.Chart(token_data);
+    });
+} );
+</script>
+{% endblock %}
+<!-- the javascript call -->

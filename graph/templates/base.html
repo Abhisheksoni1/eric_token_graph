@@ -1,0 +1,22 @@
+<html>
+{% load staticfiles %}
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+{% load highcharts_tags %}
+<!-- enable highcharts scripts -->
+<!-- highcharts_js (highcharts 3d highstock heatmap) you need to pass 1 or 0 if you want to enable 3d or highstock         etc...-->
+{% highcharts_js 1 0 0 0 %}
+<title>{% block title %}Token Data{% endblock %}</title>
+<body>
+
+{% block content %}
+{% endblock %}
+
+<!-- <footer>
+  <p>Developed By : Abhishek Soni & Divya Agrawal</p>
+</footer> -->
+
+</body>
+</html>
